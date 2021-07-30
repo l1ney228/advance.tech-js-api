@@ -1,0 +1,214 @@
+CHEAT:
+LOG CUSTOM
+{
+Print string in console
+example:
+cheat.log_custom ( "Allah" , [ 127, 127, 127 ] ) ;
+}
+GET_CHOCKED_COMMANDS
+{
+returns the choked_commands from client_state
+example:
+ var chocked_commands = cheat.get_choked_commands ( ) ;
+}
+EXECUTE_COMMAND
+{
+execute game console command
+example:
+cheat.execute_command ( "say Allah" ) ;
+}
+PRINT_TO_CONSOLE
+{
+print text in game console
+example:
+cheat.print_to_console ( "Allah", [ 255, 255, 255 ] ) ;
+}
+//////////////////////////////////////////////////////////
+MATH:
+RANDOM_INT
+{
+return random int value in range [min, max]
+example:
+var random_int = math.random_int ( 0, 255 ) ;
+}
+RANDOM_FLOAT
+{
+return random float value in range [min, max]
+example:
+var random_float = math.random_float ( 0, 255 ) ;
+}
+//////////////////////////////////////////////////////////
+RENDER:
+TEXT
+{
+draw text
+example:
+var color = [255, 255, 255, 255];
+var position = [100, 100]
+render.text( position, color, 12, 0, "Allah" ) ; // first parameter is position on screen
+}
+RECT
+{
+draw rect
+example:
+var color = [255, 255, 255, 255];
+var position = [100, 100];
+var size = [400, 400];
+
+render.rect(position, size, color, 1); // first parameter is position on screen, second parameter is rect size
+}
+RECT_FILLED
+{
+draw filled rect
+example:
+var color = [255, 255, 255, 255];
+var position = [100, 100];
+var size = [400, 400];
+
+render.filled_rect(position, size, color, 1); // first parameter is position on screen, second parameter is rect size, third parameter is color, fourth parameter is rounding
+}
+LINE
+{
+example:
+var start_line = [100, 100];
+var end_line = [200, 200];
+var color = [255, 255, 255, 255];
+
+render.line(start_line, end_line, color, 1); // first parameter is start pos of the line, second parameter is finish of the line, third parameter is color, fourth parameter is thickness
+}
+WORLD_TO_SCREEN
+{
+return 2d coordinates of 3d coordinates
+example:
+var position render.world_to_screen([100, 100, 100]);
+}
+//////////////////////////////////////////////////////////
+GLOBALS:
+REALTIME
+{
+ returns time in seconds since CS:GO was started
+ example:
+ var realtime = global_vars.realtime ( ) ;
+}
+FRAMECOUNT:
+{
+returns amount of ticks elapsed on the server
+example:
+var framecount = global_vars.frame_count ( ) ;
+}
+CURTIME:
+{
+ returns the game time in seconds
+ example:
+ var curtime = global_vars.curtime ( ) ;
+}
+FRAMETIME:
+{
+ returns time in seconds it took to render the frame
+ var frametime = global_vars.frametime ( ) ;
+}
+MAX_CLIENTS:
+{
+return num of max clients
+example:
+var max_clients = global_vars.max_clients ( ) ;
+}
+TICKCOUNT:
+{
+ returns amount of ticks elapsed on the server
+ example:
+ var tickcount = global_vars.tick_count();
+}
+INTERVAL_PER_TICK
+{
+ returns time per tick
+ example:
+ var interval_per_tick = global_vars.interval_per_tick();
+}
+//////////////////////////////////////////////////////////
+USER_CMD:
+BUTTONS
+{
+return buttons
+example:
+var buttons = user_cmd.get_buttons ( ) ;
+}
+SET_BUTTONS
+{
+used to set buttons
+example:
+var buttons = user_cmd.get_buttons ( ) ;
+user_cmd.set_buttons ( buttons | ( 1 << 1 ) ) ;
+}
+COMMAND_NUMBER
+{
+return command number
+example:
+var command_number = user_cmd.get_command_number();
+}
+SET_COMMAND_NUMBER
+{
+used to set command number
+example:
+user_cmd.set_command_number ( 1 ) ;
+}
+VIEW_ANGLES
+{
+ returns localplayer view angles
+ example:
+ var angles = user_cmd.get_view_angles ( ) ;
+}
+SET_VIEW_ANGLES
+{
+Used to set view_angles
+example:
+user_cmd.set_view_angles ( [1, 1, 1 ] ) ;
+}
+//////////////////////////////////////////////////////////
+ENTITY:
+GET_LOCAL_PLAYER
+{
+returns index of local player
+example:
+var local = entity.get_local_player ( ) ;
+}
+//////////////////////////////////////////////////////////
+ANTI_AIM:
+SEND_PACKET
+{
+returns true if packets send now
+example:
+var send_packet = antiaim.get_send_packet ( ) ;
+}
+//////////////////////////////////////////////////////////
+CALLBACKS:
+CREATE_MOVE
+{
+calls a func in create_move after calling the engine prediction
+example:
+function allah ( ) {
+  antiaim.get_send_packet ( ) = true;
+}
+register_callback('createmove', allah);
+}
+RENDER
+{
+calls a func at the end of paint_traverse
+example:
+function allah ( ) {
+  
+    var x = 10;
+    var y = 20;
+    render.filled_rect( [ x - 5, y - 30 ], [ 150, 31 ], [ 0, 0, 0, 255 ], 5 ) ;
+}
+register_callback('render', allah);
+}
+RAGEBOT_FIRE
+{
+calls a func when aimbot is firing
+example:
+function allah ( ) {
+  antiaim.get_send_packet ( ) = true;
+}
+register_callback('ragebot_fire', allah);
+}
